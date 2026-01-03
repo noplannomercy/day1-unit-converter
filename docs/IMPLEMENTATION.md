@@ -9,26 +9,26 @@
 - [x] Add additional features panel placeholder (history, favorites, formula)
 - [x] **Test:** Open in browser, verify layout renders correctly
 
-## Phase 2: Core Logic (15 min)
+## Phase 2: Core Logic (15 min) ✅
 
 ### TDD: Write Tests FIRST
-- [ ] Create `js/converter.js` with empty functions
-- [ ] Write test: `convertLength(100, 'km', 'mi')` should return `62.1371`
-- [ ] Write test: `convertWeight(1, 'kg', 'lb')` should return `2.2046`
-- [ ] Write test: `convertTemperature(0, 'C', 'F')` should return `32`
-- [ ] Write test: `convertTemperature(0, 'C', 'K')` should return `273.15`
-- [ ] Write test: Edge case - input `0` works correctly
-- [ ] Write test: Edge case - negative numbers work
-- [ ] Write test: Edge case - large numbers (1000000) work
-- [ ] **Test:** Run tests - confirm they FAIL
+- [x] Create `js/converter.js` with empty functions
+- [x] Write test: `convertLength(100, 'km', 'mi')` should return `62.1371`
+- [x] Write test: `convertWeight(1, 'kg', 'lb')` should return `2.2046`
+- [x] Write test: `convertTemperature(0, 'C', 'F')` should return `32`
+- [x] Write test: `convertTemperature(0, 'C', 'K')` should return `273.15`
+- [x] Write test: Edge case - input `0` works correctly
+- [x] Write test: Edge case - negative numbers work
+- [x] Write test: Edge case - large numbers (1000000) work
+- [x] **Test:** Run tests - confirm they FAIL
 
 ### Implement
-- [ ] Implement length conversions (m, km, ft, mi)
-- [ ] Implement weight conversions (kg, lb)
-- [ ] Implement temperature conversions (C, F, K)
-- [ ] Add input validation (numeric only)
-- [ ] Ensure 4 decimal places precision
-- [ ] **Test:** Run tests - verify all PASS
+- [x] Implement length conversions (m, km, ft, mi)
+- [x] Implement weight conversions (kg, lb)
+- [x] Implement temperature conversions (C, F, K)
+- [x] Add input validation (numeric only)
+- [x] Ensure 4 decimal places precision
+- [x] **Test:** Run tests - verify all PASS
 
 ## Phase 3: UI Connection (10 min)
 - [ ] Create `js/app.js` for main application logic
