@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Unit Converter - Test Suite</h1>
+        <div class="flex gap-2 mb-4">
+            <button onclick="runAllTests()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Run All Tests
+            </button>
+            <button onclick="runConverterTests()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                Converter Tests
+            </button>
+            <button onclick="runStorageTestsUI()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                Storage Tests
+            </button>
+        </div>
+        <div id="results" class="bg-white rounded-lg shadow p-4">
+            <p class="text-gray-500">Click a button to execute tests</p>
+        </div>
+    </div>
+
+    <script src="js/converter.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/converter.test.js"></script>
+    <script src="js/storage.test.js"></script>
+    <script>
+        function displayResults(testResults, title) {
+            const resultsDiv = document.getElementById('results');
+
+            let html = `<h2 class="font-bold mb-2">${title}</h2>`;
+            html += `<div class="mb-4 p-3 rounded ${testResults.failed > 0 ? 'bg-red-100' : 'bg-green-100'}">
+                <strong>Results:</strong> ${testResults.passed} passed, ${testResults.failed} failed
+            </div><ul class="space-y-1">`;
+
+            testResults.results.forEach(r => {
+                const icon = r.status === 'PASS' ? '✅' : '❌';
+                const color = r.status === 'PASS' ? 'text-green-600' : 'text-red-600';
+                html += `<li class="${color}">${icon} ${r.name}</li>`;
+                if (r.error) {
+                    html += `<li class="text-red-400 text-sm ml-6">${r.error}</li>`;
+                }
+            });
+
+            html += '</ul>';
+            return html;
+        }
+
+        function runConverterTests() {
+            const testResults = runTests();
+            document.getElementById('results').innerHTML = displayResults(testResults, 'Converter Tests');
+        }
+
+        function runStorageTestsUI() {
+            const testResults = runStorageTests();
+            document.getElementById('results').innerHTML = displayResults(testResults, 'Storage Tests');
+        }
+
+        function runAllTests() {
+            const converterResults = runTests();
+            const storageResults = runStorageTests();
+
+            const totalPassed = converterResults.passed + storageResults.passed;
+            const totalFailed = converterResults.failed + storageResults.failed;
+
+            let html = `<div class="mb-4 p-3 rounded ${totalFailed > 0 ? 'bg-red-100' : 'bg-green-100'}">
+                <strong>Total:</strong> ${totalPassed} passed, ${totalFailed} failed
+            </div>`;
+
+            html += displayResults(converterResults, 'Converter Tests');
+            html += '<hr class="my-4">';
+            html += displayResults(storageResults, 'Storage Tests');
+
+            document.getElementById('results').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
