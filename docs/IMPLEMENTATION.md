@@ -39,37 +39,37 @@
 - [x] Connect converter.js functions to UI
 - [x] **Test:** Type in input, verify instant result updates
 
-## Phase 4: Features (15 min)
+## Phase 4: Features (15 min) ✅
 
 ### TDD: Storage Tests FIRST
-- [ ] Create `js/storage.js` with empty functions
-- [ ] Write test: `saveHistory(item)` stores to LocalStorage
-- [ ] Write test: `getHistory()` retrieves array from LocalStorage
-- [ ] Write test: `clearHistory()` removes history
-- [ ] Write test: History limits to 10 items
-- [ ] Write test: `saveFavorite(item)` stores favorite
-- [ ] Write test: Favorites limit to 5 items
-- [ ] Write test: Storage error handling with try-catch
-- [ ] **Test:** Run tests - confirm they FAIL
+- [x] Create `js/storage.js` with empty functions
+- [x] Write test: `saveHistory(item)` stores to LocalStorage
+- [x] Write test: `getHistory()` retrieves array from LocalStorage
+- [x] Write test: `clearHistory()` removes history
+- [x] Write test: History limits to 10 items
+- [x] Write test: `saveFavorite(item)` stores favorite
+- [x] Write test: Favorites limit to 5 items
+- [x] Write test: Storage error handling with try-catch
+- [x] **Test:** Run tests - confirm they FAIL
 
 ### Implement Storage
-- [ ] Implement `saveHistory()` with 10 item limit
-- [ ] Implement `getHistory()` with error handling
-- [ ] Implement `clearHistory()`
-- [ ] Implement `saveFavorite()` with 5 item limit
-- [ ] Implement `getFavorites()`
-- [ ] Implement `removeFavorite()`
-- [ ] **Test:** Run tests - verify all PASS
+- [x] Implement `saveHistory()` with 10 item limit
+- [x] Implement `getHistory()` with error handling
+- [x] Implement `clearHistory()`
+- [x] Implement `saveFavorite()` with 5 item limit
+- [x] Implement `getFavorites()`
+- [x] Implement `removeFavorite()`
+- [x] **Test:** Run tests - verify all PASS
 
 ### Implement UI Features
-- [ ] Display history list (last 10 conversions)
-- [ ] Add "Clear History" button
-- [ ] Add click-to-reuse on history items
-- [ ] Display favorites list
-- [ ] Add star icon toggle for favorites
-- [ ] Add formula display toggle
-- [ ] Show conversion formula (e.g., "1 km = 1,000 m")
-- [ ] **Test:** Perform conversions, verify history saves
+- [x] Display history list (last 10 conversions)
+- [x] Add "Clear History" button
+- [x] Add click-to-reuse on history items
+- [x] Display favorites list
+- [x] Add star icon toggle for favorites
+- [x] Add formula display toggle
+- [x] Show conversion formula (e.g., "1 km = 1,000 m")
+- [x] **Test:** Perform conversions, verify history saves
 
 ## Phase 5: Polish (10 min)
 - [ ] Add error messages for invalid input
