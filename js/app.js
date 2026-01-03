@@ -188,6 +188,11 @@ function performConversion() {
         hideError();
         updateFormula();
 
+        // Visual feedback
+        resultValue.classList.remove('result-highlight');
+        void resultValue.offsetWidth; // Trigger reflow
+        resultValue.classList.add('result-highlight');
+
         // Save to history
         saveHistory({
             category: currentCategory,
