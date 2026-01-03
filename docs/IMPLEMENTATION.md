@@ -1,0 +1,109 @@
+# Unit Converter - Implementation Plan
+
+## Phase 1: Basic Structure (10 min)
+- [ ] Create `index.html` with HTML5 skeleton
+- [ ] Add Tailwind CSS CDN link
+- [ ] Create header with title "Unit Converter"
+- [ ] Build tab navigation (Length, Weight, Temperature)
+- [ ] Create conversion panel layout (input, dropdowns, result)
+- [ ] Add additional features panel placeholder (history, favorites, formula)
+- [ ] **Test:** Open in browser, verify layout renders correctly
+
+## Phase 2: Core Logic (15 min)
+
+### TDD: Write Tests FIRST
+- [ ] Create `js/converter.js` with empty functions
+- [ ] Write test: `convertLength(100, 'km', 'mi')` should return `62.1371`
+- [ ] Write test: `convertWeight(1, 'kg', 'lb')` should return `2.2046`
+- [ ] Write test: `convertTemperature(0, 'C', 'F')` should return `32`
+- [ ] Write test: `convertTemperature(0, 'C', 'K')` should return `273.15`
+- [ ] Write test: Edge case - input `0` works correctly
+- [ ] Write test: Edge case - negative numbers work
+- [ ] Write test: Edge case - large numbers (1000000) work
+- [ ] **Test:** Run tests - confirm they FAIL
+
+### Implement
+- [ ] Implement length conversions (m, km, ft, mi)
+- [ ] Implement weight conversions (kg, lb)
+- [ ] Implement temperature conversions (C, F, K)
+- [ ] Add input validation (numeric only)
+- [ ] Ensure 4 decimal places precision
+- [ ] **Test:** Run tests - verify all PASS
+
+## Phase 3: UI Connection (10 min)
+- [ ] Create `js/app.js` for main application logic
+- [ ] Add event listeners for tab switching
+- [ ] Add event listener for input (real-time conversion)
+- [ ] Add event listeners for unit dropdown changes
+- [ ] Implement dynamic result display
+- [ ] Connect converter.js functions to UI
+- [ ] **Test:** Type in input, verify instant result updates
+
+## Phase 4: Features (15 min)
+
+### TDD: Storage Tests FIRST
+- [ ] Create `js/storage.js` with empty functions
+- [ ] Write test: `saveHistory(item)` stores to LocalStorage
+- [ ] Write test: `getHistory()` retrieves array from LocalStorage
+- [ ] Write test: `clearHistory()` removes history
+- [ ] Write test: History limits to 10 items
+- [ ] Write test: `saveFavorite(item)` stores favorite
+- [ ] Write test: Favorites limit to 5 items
+- [ ] Write test: Storage error handling with try-catch
+- [ ] **Test:** Run tests - confirm they FAIL
+
+### Implement Storage
+- [ ] Implement `saveHistory()` with 10 item limit
+- [ ] Implement `getHistory()` with error handling
+- [ ] Implement `clearHistory()`
+- [ ] Implement `saveFavorite()` with 5 item limit
+- [ ] Implement `getFavorites()`
+- [ ] Implement `removeFavorite()`
+- [ ] **Test:** Run tests - verify all PASS
+
+### Implement UI Features
+- [ ] Display history list (last 10 conversions)
+- [ ] Add "Clear History" button
+- [ ] Add click-to-reuse on history items
+- [ ] Display favorites list
+- [ ] Add star icon toggle for favorites
+- [ ] Add formula display toggle
+- [ ] Show conversion formula (e.g., "1 km = 1,000 m")
+- [ ] **Test:** Perform conversions, verify history saves
+
+## Phase 5: Polish (10 min)
+- [ ] Add error messages for invalid input
+- [ ] Handle division by zero cases
+- [ ] Add loading/feedback states
+- [ ] Test mobile responsive (320px viewport)
+- [ ] Verify all Tailwind classes (no inline styles)
+- [ ] Check for console errors
+- [ ] **Test:** Full test suite passes
+
+## Final Verification Checklist
+
+### Conversion Accuracy
+- [ ] 100 km = 62.1371 mi
+- [ ] 1 kg = 2.2046 lb
+- [ ] 0°C = 32°F = 273.15K
+- [ ] Negative numbers work
+- [ ] Very large numbers work
+
+### Features
+- [ ] History adds new items
+- [ ] History clears properly
+- [ ] Favorites save/load
+- [ ] Formula toggles correctly
+- [ ] Tabs switch smoothly
+
+### Edge Cases
+- [ ] Input 0 works
+- [ ] Invalid input shows error
+- [ ] LocalStorage full handled
+- [ ] Browser without LocalStorage works
+
+### Non-Functional
+- [ ] Loads in < 2 seconds
+- [ ] Works on mobile (320px+)
+- [ ] No console errors
+- [ ] Clean, readable code
