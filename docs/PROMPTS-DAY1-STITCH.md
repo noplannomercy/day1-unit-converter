@@ -1,3 +1,6 @@
+# 0. MCP Setting
+.mcp.json
+
 # 1. 디자인 생성 (MCP)
 @stitch Unit Converter 만들어줘. 모던하고 깔끔한 스타일.
 
