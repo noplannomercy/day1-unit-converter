@@ -5,7 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "text-primary": "#111318",
+                        "text-secondary": "#616f89",
+                        "border-color": "#dbdfe6",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                    },
+                },
+            },
+        }
+    </script>
     <style>
+        body { font-family: 'Inter', sans-serif; }
+
         /* Visual feedback animation */
         @keyframes highlight {
             0% { background-color: rgb(187 247 208); }
@@ -16,37 +42,38 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-background-light min-h-screen">
     <div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-lg">
         <!-- Header -->
-        <header class="text-center mb-4 sm:mb-8">
-            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Unit Converter</h1>
+        <header class="text-center mb-6 sm:mb-10">
+            <h1 class="text-3xl sm:text-4xl font-black text-text-primary tracking-tight">Unit Converter</h1>
+            <p class="text-sm text-text-secondary mt-2">Precise conversions at your fingertips</p>
         </header>
 
         <!-- Tab Navigation -->
-        <nav class="flex mb-4 sm:mb-6 bg-white rounded-lg shadow">
-            <button id="tab-length" class="tab-btn flex-1 py-2 sm:py-3 px-2 sm:px-4 text-center text-sm sm:text-base font-medium rounded-l-lg bg-blue-500 text-white transition-colors" data-category="length">
+        <nav class="flex mb-6 sm:mb-8 bg-white rounded-xl shadow-sm border border-border-color overflow-hidden">
+            <button id="tab-length" class="tab-btn flex-1 py-3 sm:py-3.5 px-2 sm:px-4 text-center text-sm sm:text-base font-semibold bg-primary text-white transition-colors" data-category="length">
                 Length
             </button>
-            <button id="tab-weight" class="tab-btn flex-1 py-2 sm:py-3 px-2 sm:px-4 text-center text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-50 transition-colors" data-category="weight">
+            <button id="tab-weight" class="tab-btn flex-1 py-3 sm:py-3.5 px-2 sm:px-4 text-center text-sm sm:text-base font-semibold text-text-secondary hover:bg-gray-50 transition-colors border-l border-r border-border-color" data-category="weight">
                 Weight
             </button>
-            <button id="tab-temperature" class="tab-btn flex-1 py-2 sm:py-3 px-2 sm:px-4 text-center text-sm sm:text-base font-medium rounded-r-lg text-gray-600 hover:bg-gray-50 transition-colors" data-category="temperature">
+            <button id="tab-temperature" class="tab-btn flex-1 py-3 sm:py-3.5 px-2 sm:px-4 text-center text-sm sm:text-base font-semibold text-text-secondary hover:bg-gray-50 transition-colors" data-category="temperature">
                 Temp
             </button>
         </nav>
 
         <!-- Conversion Panel -->
-        <section class="bg-white rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
+        <section class="bg-white rounded-xl shadow-sm border border-border-color p-5 sm:p-8 mb-6">
             <!-- Input -->
-            <div class="mb-4">
-                <label for="input-value" class="block text-sm font-medium text-gray-700 mb-2">Input</label>
-                <div class="flex flex-col sm:flex-row gap-2">
+            <div class="mb-6">
+                <label for="input-value" class="block text-sm font-semibold text-text-secondary mb-2 px-1">Input</label>
+                <div class="flex flex-col sm:flex-row gap-3">
                     <input type="number" id="input-value"
-                        class="flex-1 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
+                        class="flex-1 h-12 sm:h-14 px-4 border border-border-color rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-base font-medium"
                         placeholder="Enter value"
                         inputmode="decimal">
-                    <select id="from-unit" class="px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base">
+                    <select id="from-unit" class="h-12 sm:h-14 px-4 border border-border-color rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm sm:text-base font-medium">
                         <option value="m">meter (m)</option>
                         <option value="km">kilometer (km)</option>
                         <option value="ft">feet (ft)</option>
@@ -56,19 +83,21 @@
             </div>
 
             <!-- Arrow -->
-            <div class="text-center text-gray-400 my-2">
-                <span class="text-2xl">↓</span>
+            <div class="flex justify-center my-4">
+                <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="text-2xl">↓</span>
+                </div>
             </div>
 
             <!-- Result -->
-            <div class="mb-4">
-                <label for="result-value" class="block text-sm font-medium text-gray-700 mb-2">Result</label>
-                <div class="flex flex-col sm:flex-row gap-2">
+            <div class="mb-6">
+                <label for="result-value" class="block text-sm font-semibold text-text-secondary mb-2 px-1">Result</label>
+                <div class="flex flex-col sm:flex-row gap-3">
                     <input type="text" id="result-value"
-                        class="flex-1 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-base font-medium"
+                        class="flex-1 h-12 sm:h-14 px-4 border border-border-color rounded-xl bg-background-light text-base font-medium outline-none"
                         readonly
                         placeholder="Result">
-                    <select id="to-unit" class="px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base">
+                    <select id="to-unit" class="h-12 sm:h-14 px-4 border border-border-color rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm sm:text-base font-medium">
                         <option value="m">meter (m)</option>
                         <option value="km">kilometer (km)</option>
                         <option value="ft">feet (ft)</option>
@@ -78,50 +107,55 @@
             </div>
 
             <!-- Error Message -->
-            <div id="error-message" class="hidden text-red-500 text-sm mt-2 p-2 bg-red-50 rounded"></div>
+            <div id="error-message" class="hidden text-red-500 text-sm mt-2 p-3 bg-red-50 rounded-lg border border-red-200"></div>
 
             <!-- Formula Display -->
-            <div class="mt-4 pt-4 border-t border-gray-200">
-                <button id="formula-toggle" class="text-sm text-blue-500 hover:text-blue-700 transition-colors">
+            <div class="mt-6 pt-6 border-t border-border-color">
+                <button id="formula-toggle" class="text-sm text-primary hover:text-primary/80 font-semibold transition-colors">
                     Show Formula
                 </button>
-                <div id="formula-display" class="hidden mt-2 text-sm text-gray-600 bg-gray-50 p-2 rounded">
+                <div id="formula-display" class="hidden mt-3 text-sm text-text-secondary bg-background-light p-3 rounded-lg">
                     <!-- Formula will be displayed here -->
                 </div>
             </div>
         </section>
 
         <!-- Additional Features Panel -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <!-- History -->
-            <div class="bg-white rounded-lg shadow p-3 sm:p-4">
-                <div class="flex justify-between items-center mb-2 sm:mb-3">
-                    <h2 class="font-medium text-gray-700 text-sm sm:text-base">History</h2>
-                    <button id="clear-history" class="text-xs text-red-500 hover:text-red-700 transition-colors">Clear</button>
+            <div class="bg-white rounded-xl shadow-sm border border-border-color p-4 sm:p-5">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-text-primary text-sm sm:text-base">History</h2>
+                    <button id="clear-history" class="text-xs text-red-500 hover:text-red-700 font-semibold transition-colors">Clear</button>
                 </div>
-                <ul id="history-list" class="text-xs sm:text-sm text-gray-600 space-y-1 max-h-32 sm:max-h-40 overflow-y-auto">
+                <ul id="history-list" class="text-xs sm:text-sm text-text-secondary space-y-1.5 max-h-32 sm:max-h-40 overflow-y-auto">
                     <li class="text-gray-400 italic">No history yet</li>
                 </ul>
             </div>
 
             <!-- Favorites -->
-            <div class="bg-white rounded-lg shadow p-3 sm:p-4">
-                <h2 class="font-medium text-gray-700 mb-2 sm:mb-3 text-sm sm:text-base">Favorites</h2>
-                <ul id="favorites-list" class="text-xs sm:text-sm text-gray-600 space-y-1 max-h-32 sm:max-h-40 overflow-y-auto">
+            <div class="bg-white rounded-xl shadow-sm border border-border-color p-4 sm:p-5">
+                <h2 class="font-bold text-text-primary mb-3 text-sm sm:text-base">Favorites</h2>
+                <ul id="favorites-list" class="text-xs sm:text-sm text-text-secondary space-y-1.5 max-h-32 sm:max-h-40 overflow-y-auto">
                     <li class="text-gray-400 italic">No favorites yet</li>
                 </ul>
             </div>
         </section>
 
         <!-- Add to Favorites Button -->
-        <div class="mt-3 sm:mt-4 text-center">
-            <button id="add-favorite" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-yellow-500 transition-colors py-2">
-                <span>☆</span> Add to Favorites
+        <div class="mt-4 sm:mt-6 text-center">
+            <button id="add-favorite" class="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-yellow-500 font-semibold transition-colors py-2 px-4 rounded-lg hover:bg-white">
+                <span class="text-lg">☆</span> Add to Favorites
             </button>
         </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center">
+            <p class="text-xs text-text-secondary">Results rounded to 4 decimal places</p>
+        </footer>
     </div>
 
-    <!-- JS Files (to be created) -->
+    <!-- JS Files -->
     <script src="js/converter.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/app.js"></script>
